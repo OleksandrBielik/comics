@@ -1,0 +1,18 @@
+$main-bg-color: #202020;
+$border-color: #393939;
+$white: #ffffff;
+header {
+	background-color: $main-bg-color;
+  color: $white;
+  border-bottom: 2px solid $border-color;
+}
+
+.authorization {
+  display: flex;
+  align-items: center;
+  svg {
+    fill: $white;
+    margin-right: 10px;
+  }
+}
+
