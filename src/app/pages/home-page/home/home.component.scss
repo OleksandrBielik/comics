@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+}
 :host {
-  display: block;
+  display: inline-flex;
+  width: 70%;
 }
