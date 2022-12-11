@@ -1,34 +1,28 @@
 ul {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  margin: -10px;
   li {
     margin: 10px;
-    width: 100%;
+    width: calc((100% - 4 *10px) / 2);
     @media screen and (min-width:768px) {
-      width: calc((100% - 4 *10px) / 2);
-    }
-    @media screen and (min-width:1200px) {
-        width: calc((100% - 6 *10px) / 3);
+      width: calc((100% - 6 *10px) / 3);
     }
   }
   img {
-    width: 145px;
-    height: 120px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
   }
 }
 
 .container {
-  max-width: 480px;
-  width: 100%;
+  width: 320px;
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
 
   @media screen and (min-width:768px) {
       width: 768px;
-      max-width: none;
   }
 
   @media screen and (min-width:1200px) {
