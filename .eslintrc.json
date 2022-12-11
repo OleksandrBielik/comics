@@ -3,6 +3,7 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "rules": {"prettier/prettier": ["error", {"endOfLine": "auto"}]},
   "overrides": [
     {
       "files": [
@@ -50,7 +51,10 @@
       "extends": ["plugin:prettier/recommended"],
       "rules": {
         // NOTE: WE ARE OVERRIDING THE DEFAULT CONFIG TO ALWAYS SET THE PARSER TO ANGULAR (SEE BELOW)
-        "prettier/prettier": ["error", { "parser": "angular" }]
+        "prettier/prettier": ["error", {
+          "endOfLine": "auto",
+          "parser": "angular"
+ }]
       }
     }
   ]
