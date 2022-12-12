@@ -10,7 +10,7 @@ ul {
     }
   }
   img {
-    height: auto;
+    height: 250.33px;
     object-fit: contain;
   }
 }
@@ -29,4 +29,9 @@ ul {
       width: 1200px;
   }
 
+}
+
+:host {
+  width: 70%;
+  margin-right: 40px;
 }

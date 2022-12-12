@@ -1,6 +1,6 @@
 <main>
   <div class="container">
-    <app-item-list></app-item-list>
-    <app-item-info></app-item-info>
+    <app-item-list (pickComic)="changeCurrentComic($event)"></app-item-list>
+    <app-item-info [currentComic]="currentComic"></app-item-info>
   </div>
 </main>

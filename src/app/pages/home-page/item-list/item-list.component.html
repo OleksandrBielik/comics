@@ -1,12 +1,12 @@
 <ul>
-      <li *ngFor="let item of characters">
-        <div class="thumb">
-          <img
-            [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
-            [alt]="item.name + ' image'"
-            height="135"
-          />
-        </div>
-        <h2>{{ item.name }}</h2>
-      </li>
+  <li *ngFor="let item of characters" (click)="onCLick(item)">
+    <div class="thumb">
+      <img
+        [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
+        [alt]="item.name + ' image'"
+        height="135"
+      />
+    </div>
+    <h2>{{ item.name }}</h2>
+  </li>
 </ul>

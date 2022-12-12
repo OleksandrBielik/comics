@@ -1,1 +1,16 @@
-<p>item-info works!</p>
+<article *ngIf="currentComic">
+  <div class="thumb">
+    <img
+      [src]="
+        currentComic.thumbnail.path + '.' + currentComic.thumbnail.extension
+      "
+      [alt]="currentComic.name + ' image'"
+    />
+  </div>
+  <h2><span>Name: </span>{{ currentComic.name }}</h2>
+  <p><span>Description: </span> {{ currentComic.description }}</p>
+  <div class="link-wrapper">
+    <a href="#">GET MORE INFO</a>
+  </div>
+</article>
+<div *ngIf="!currentComic">EMPTY</div>
