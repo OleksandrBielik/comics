@@ -1,5 +1,12 @@
 <div class="container">
-  <app-item-list (pickComic)="changeCurrentComic($event)"></app-item-list>
+  <div class="wrapper">
+    <section>
+      <app-random-character></app-random-character>
+    </section>
+    <section>
+      <app-item-list (pickComic)="changeCurrentComic($event)"></app-item-list>
+    </section>
+  </div>
   <aside>
     <app-item-info [currentComic]="currentComic"></app-item-info>
   </aside>

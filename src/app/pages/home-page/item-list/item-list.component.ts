@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MarvelHttpService } from 'src/app/services/marvel-http.service';
 import { MarvelService } from 'src/app/services/marvel.service';
-import { Comic } from 'src/app/shared/types/interfaces';
+import { Char } from 'src/app/shared/types/interfaces';
 
 @Component({
   selector: 'app-item-list',
@@ -9,21 +11,25 @@ import { Comic } from 'src/app/shared/types/interfaces';
   styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-  constructor(private marvelService: MarvelService) {}
-  characters: Comic[] = [];
-  comic?: Comic;
-  @Output() pickComic = new EventEmitter<Comic>();
+  constructor(
+    private marvelHttpService: MarvelHttpService,
+    private marvelService: MarvelService
+  ) {}
+  characterList$?: Observable<Char[]>;
+  comic?: Char;
+  @Output() pickComic = new EventEmitter<Char>();
 
-  onCLick(item: Comic): void {
+  onCLick(item: Char): void {
     this.comic = item;
     this.pickComic.emit(this.comic);
   }
 
   ngOnInit(): void {
-    this.marvelService.characters
+    this.characterList$ = this.marvelService.characterList$;
+    this.marvelHttpService.characters
       .pipe(
         map((value) => {
-          return value.data.results.map((item: Comic) => {
+          return value.data.results.map((item: Char) => {
             return {
               id: item.id,
               name: item.name,
@@ -33,6 +39,9 @@ export class ItemListComponent implements OnInit {
           });
         })
       )
-      .subscribe((response) => (this.characters = response));
+      .subscribe((response) => {
+        this.marvelService.setCharacters(response);
+        this.marvelService.addCharacters(response);
+      });
   }
 }

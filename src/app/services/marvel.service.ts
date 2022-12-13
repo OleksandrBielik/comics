@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
+import { Char } from '../shared/types/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +9,18 @@ import { Observable } from 'rxjs';
 export class MarvelService {
   constructor(private http: HttpClient) {}
 
-  get characters(): Observable<any> {
-    return this.http.get(
-      'https://gateway.marvel.com:443/v1/public/characters?apikey=c9b447237a938fb45510338c1513036b'
-    );
+  private _characterList = new BehaviorSubject<Char[]>([]);
+  readonly characterList$ = this._characterList.asObservable();
+
+  private characterList: Char[] = [];
+
+  setCharacters(charList: Char[]): void {
+    this.characterList = charList;
+    this._characterList.next(this.characterList);
+  }
+
+  addCharacters(charList: Char[]): void {
+    this.characterList = this.characterList.concat(charList);
+    this._characterList.next(this.characterList);
   }
 }

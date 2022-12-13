@@ -1,4 +1,4 @@
-export interface Comic {
+export interface Char {
   id: string;
   name: string;
   description: string;

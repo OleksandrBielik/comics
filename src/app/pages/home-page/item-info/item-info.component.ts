@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Comic } from 'src/app/shared/types/interfaces';
+import { Char } from 'src/app/shared/types/interfaces';
 
 @Component({
   selector: 'app-item-info',
@@ -7,5 +7,5 @@ import { Comic } from 'src/app/shared/types/interfaces';
   styleUrls: ['./item-info.component.scss'],
 })
 export class ItemInfoComponent {
-  @Input() currentComic?: Comic;
+  @Input() currentComic?: Char;
 }

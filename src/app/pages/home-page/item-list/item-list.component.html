@@ -1,5 +1,5 @@
 <ul class="characters-container">
-  <li *ngFor="let item of characters" (click)="onCLick(item)">
+  <li *ngFor="let item of characterList$ | async" (click)="onCLick(item)">
     <div class="thumb">
       <img
         [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
