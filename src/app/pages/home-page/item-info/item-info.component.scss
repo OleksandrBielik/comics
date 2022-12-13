@@ -1,6 +1,7 @@
 :host {
   display: block;
-  width: 30%;
+  margin-left: auto;
+  margin-bottom: auto;
 }
 
 article {
@@ -8,6 +9,8 @@ article {
   flex-direction: column;
   align-items: flex-start;
   padding: 15px;
+  background-color: #fff;
+  border-radius: 3px;
   .thumb {
     display: flex;
     justify-content: center;
@@ -15,6 +18,7 @@ article {
   }
   img {
     width: 200px;
+    border-radius: 3px;
   }
   h2 {
     font-weight: 400;
@@ -31,7 +35,21 @@ article {
   a {
     display: inline-block;
     padding: 10px;
+    margin-top: 15px;
     background-color: #e62429;
     color: currentColor;
+  }
+  .skeleton {
+    background-color: rgb(179, 179, 179);
+  }
+  .skeleton-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 3px;
+  }
+  .skeleton-title, .skeleton-description {
+    height: 16px;
+    width: 100%;
+    border-radius: 3px;
   }
 }

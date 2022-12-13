@@ -8,9 +8,19 @@ import { ItemListComponent } from './pages/home-page/item-list/item-list.compone
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home-page/home/home.component';
 import { ItemInfoComponent } from './pages/home-page/item-info/item-info.component';
+import { ComicComponent } from './pages/comic-page/comic/comic.component';
+import { RandomCharacterComponent } from './pages/home-page/random-character/random-character.component';
 
 @NgModule({
-  declarations: [AppComponent, ItemListComponent, HeaderComponent, HomeComponent, ItemInfoComponent],
+  declarations: [
+    AppComponent,
+    ItemListComponent,
+    HeaderComponent,
+    HomeComponent,
+    ItemInfoComponent,
+    ComicComponent,
+    RandomCharacterComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

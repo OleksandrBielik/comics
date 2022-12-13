@@ -1,6 +1,10 @@
+:host {
+  display: block;
+}
 .container {
   display: flex;
 }
-:host {
-  width: 100%;
+aside {
+  width: 30%;
+  margin-left: 40px;
 }

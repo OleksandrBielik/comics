@@ -8,9 +8,18 @@
     />
   </div>
   <h2><span>Name: </span>{{ currentComic.name }}</h2>
-  <p><span>Description: </span> {{ currentComic.description }}</p>
+  <p>
+    <span>Description: </span>
+    {{ currentComic.description ? currentComic.description : "Unknown" }}
+  </p>
   <div class="link-wrapper">
-    <a href="#">GET MORE INFO</a>
+    <a [routerLink]="['/comic', currentComic.id]">GET MORE INFO</a>
   </div>
 </article>
-<div *ngIf="!currentComic">EMPTY</div>
+<article *ngIf="!currentComic">
+  <div class="thumb">
+    <span class="skeleton-image skeleton"></span>
+  </div>
+  <h2 class="skeleton-title skeleton"></h2>
+  <p class="skeleton-description skeleton"></p>
+</article>
