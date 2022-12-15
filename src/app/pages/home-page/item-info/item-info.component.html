@@ -12,10 +12,19 @@
     <span>Description: </span>
     {{ currentComic.description ? currentComic.description : "Unknown" }}
   </p>
-  <div class="link-wrapper">
-    <a [routerLink]="['/comic', currentComic.id]">GET MORE INFO</a>
-  </div>
+  <a [routerLink]="['/comic', currentComic.id]" class="btn">
+    <span class="fragment transform">
+      <span class="inner-fragment large"></span>
+      <span class="inner-fragment small"></span>
+    </span>
+    <span class="link-title"><span>GET MORE INFO</span></span>
+    <span class="fragment">
+      <span class="inner-fragment large"></span>
+      <span class="inner-fragment small"></span>
+    </span>
+  </a>
 </article>
+<div class="test"></div>
 <article *ngIf="!currentComic">
   <div class="thumb">
     <span class="skeleton-image skeleton"></span>

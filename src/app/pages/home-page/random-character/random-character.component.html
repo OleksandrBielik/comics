@@ -1,9 +1,30 @@
 <div class="random-char">
   <div class="thumb">
-    <img src="" alt="" />
+    <img
+      [src]="
+        randomCharacter?.thumbnail?.path +
+        '.' +
+        randomCharacter?.thumbnail?.extension
+      "
+      [alt]="randomCharacter?.name + ' image'"
+    />
   </div>
   <div>
+    <h2 class="character-name">{{ randomCharacter?.name }}</h2>
+    <p>{{ randomCharacter?.description }}</p>
+  </div>
+  <div class="wrapper">
     <h2>Get your random character now!</h2>
-    <button type="button">TRY IT</button>
+    <button type="button" class="btn" (click)="setRandomChar()">
+      <span class="fragment transform">
+        <span class="inner-fragment large"></span>
+        <span class="inner-fragment small"></span>
+      </span>
+      <span class="link-title"><span>TRY IT</span></span>
+      <span class="fragment">
+        <span class="inner-fragment large"></span>
+        <span class="inner-fragment small"></span>
+      </span>
+    </button>
   </div>
 </div>

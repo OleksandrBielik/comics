@@ -26,22 +26,8 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit(): void {
     this.characterList$ = this.marvelService.characterList$;
-    this.marvelHttpService.characters
-      .pipe(
-        map((value) => {
-          return value.data.results.map((item: Char) => {
-            return {
-              id: item.id,
-              name: item.name,
-              description: item.description,
-              thumbnail: item.thumbnail,
-            };
-          });
-        })
-      )
-      .subscribe((response) => {
-        this.marvelService.setCharacters(response);
-        this.marvelService.addCharacters(response);
-      });
+    this.marvelHttpService.characters.subscribe((response) => {
+      this.marvelService.setCharacters(response);
+    });
   }
 }
