@@ -8,8 +8,9 @@ import { ItemListComponent } from './pages/home-page/item-list/item-list.compone
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home-page/home/home.component';
 import { ItemInfoComponent } from './pages/home-page/item-info/item-info.component';
-import { ComicComponent } from './pages/comic-page/comic/comic.component';
 import { RandomCharacterComponent } from './pages/home-page/random-character/random-character.component';
+import { CharacterComponent } from './pages/character-page/character/character.component';
+import { NavListComponent } from './shared/components/nav-list/nav-list.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { RandomCharacterComponent } from './pages/home-page/random-character/ran
     HeaderComponent,
     HomeComponent,
     ItemInfoComponent,
-    ComicComponent,
     RandomCharacterComponent,
+    CharacterComponent,
+    NavListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
