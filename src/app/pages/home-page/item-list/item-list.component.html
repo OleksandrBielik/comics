@@ -1,12 +1,17 @@
 <ul class="characters-container">
-  <li *ngFor="let item of characterList$ | async" (click)="onCLick(item)">
-    <div class="thumb">
-      <img
-        [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
-        [alt]="item.name + ' image'"
-        height="135"
-      />
-    </div>
-    <h2>{{ item.name }}</h2>
+  <li *ngFor="let item of characterList$ | async">
+    <button type="button" (click)="onCLick(item)">
+      <div class="thumb">
+        <img
+          [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
+          [alt]="item.name + ' image'"
+          height="135"
+        />
+      </div>
+      <div class="card-body">
+        <h2>{{ item.name }}</h2>
+        <div class="overlay"></div>
+      </div>
+    </button>
   </li>
 </ul>

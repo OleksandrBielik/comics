@@ -16,17 +16,22 @@ export class MarvelHttpService {
         'https://gateway.marvel.com:443/v1/public/characters?apikey=c9b447237a938fb45510338c1513036b'
       )
       .pipe(
-        map((value: any) => {
-          console.log(value);
-          return value.data.results.map((item: Char) => {
+        map((value: any) => value.data.results),
+        map((value: Char[]) =>
+          value.filter(
+            (item) => !item.thumbnail.path.includes('image_not_available')
+          )
+        ),
+        map((value: Char[]) =>
+          value.map((item: Char) => {
             return {
               id: item.id,
               name: item.name,
               description: item.description,
               thumbnail: item.thumbnail,
             };
-          });
-        })
+          })
+        )
       );
   }
 

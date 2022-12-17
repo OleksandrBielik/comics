@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { MarvelHttpService } from 'src/app/services/marvel-http.service';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { Char } from 'src/app/shared/types/interfaces';
