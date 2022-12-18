@@ -3,6 +3,9 @@
   flex-wrap: wrap;
   background-color: #fff;
   border-radius: 3px;
+  button {
+    width: 100%;
+  }
   li {
     margin: 15px;
     width: calc((100% - 8*15px) / 4);
@@ -13,15 +16,17 @@
     overflow: hidden;
     height: 135px;
     padding: 15px;
+    width: 100%;
     background-color: #202020;
   }
   .thumb {
     height: 200px;
+    width: 100%;
   }
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     transition: all 250ms ease-in-out;
   }
   h2 {

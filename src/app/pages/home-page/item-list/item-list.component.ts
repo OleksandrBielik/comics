@@ -16,6 +16,7 @@ export class ItemListComponent implements OnInit {
   ) {}
   characterList$?: Observable<Char[]>;
   comic?: Char;
+  characterListOffset = 0;
   @Output() pickComic = new EventEmitter<Char>();
 
   onCLick(item: Char): void {
@@ -23,10 +24,17 @@ export class ItemListComponent implements OnInit {
     this.pickComic.emit(this.comic);
   }
 
+  setCharacters(): void {
+    this.marvelHttpService
+      .fetchCharacters(this.characterListOffset)
+      .subscribe((response) => this.marvelService.addCharacters(response));
+  }
+
   ngOnInit(): void {
     this.characterList$ = this.marvelService.characterList$;
-    this.marvelHttpService.characters.subscribe((response) => {
-      this.marvelService.setCharacters(response);
+    this.marvelService.characterListOffset$.subscribe((value) => {
+      this.characterListOffset = value;
     });
+    this.setCharacters();
   }
 }

@@ -1,3 +1,4 @@
+import { MarvelService } from 'src/app/services/marvel.service';
 import { Component, OnInit } from '@angular/core';
 import { MarvelHttpService } from 'src/app/services/marvel-http.service';
 import { Char } from 'src/app/shared/types/interfaces';
@@ -8,16 +9,24 @@ import { Char } from 'src/app/shared/types/interfaces';
   styleUrls: ['./random-character.component.scss'],
 })
 export class RandomCharacterComponent implements OnInit {
-  constructor(private marvelHttpService: MarvelHttpService) {}
+  constructor(
+    private marvelHttpService: MarvelHttpService,
+    private marvelService: MarvelService
+  ) {}
   randomCharacter?: Char;
+  totalOffset!: number;
 
   setRandomChar(): void {
-    this.marvelHttpService.randomCharacter.subscribe(
-      (value: Char) => (this.randomCharacter = value)
-    );
+    const offset = Math.floor(Math.random() * (this.totalOffset / 20));
+    this.marvelHttpService
+      .fetchRandomCharacter(offset)
+      .subscribe((value: Char) => (this.randomCharacter = value));
   }
 
   ngOnInit(): void {
     this.setRandomChar();
+    this.marvelService.totalOffset$.subscribe((value) => {
+      this.totalOffset = value;
+    });
   }
 }
