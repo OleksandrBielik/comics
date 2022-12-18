@@ -28,6 +28,11 @@ export class ItemListComponent implements OnInit {
     this.marvelHttpService
       .fetchCharacters(this.characterListOffset)
       .subscribe((response) => this.marvelService.addCharacters(response));
+    console.log(this.characterListOffset, this.marvelService.getTotalOffset());
+  }
+
+  isValidOffset(): boolean {
+    return this.characterListOffset < this.marvelService.getTotalOffset();
   }
 
   ngOnInit(): void {

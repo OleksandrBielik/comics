@@ -19,7 +19,11 @@ export class MarvelService {
 
   private _totalOffset = new BehaviorSubject<number>(0);
   readonly totalOffset$ = this._totalOffset.asObservable();
-  private totalOffset?: number;
+  private totalOffset = 0;
+
+  getTotalOffset() {
+    return this.totalOffset;
+  }
 
   setCharacters(charList: Char[]): void {
     this.characterList = charList;

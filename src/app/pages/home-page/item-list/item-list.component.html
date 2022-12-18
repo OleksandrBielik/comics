@@ -15,4 +15,11 @@
     </button>
   </li>
 </ul>
-<button type="button" class="btn" (click)="setCharacters()">SHOW MORE</button>
+<button
+  type="button"
+  class="btn"
+  [disabled]="!isValidOffset"
+  (click)="setCharacters()"
+>
+  SHOW MORE
+</button>
