@@ -42,6 +42,11 @@ article {
     width: 100%;
     border-radius: 3px;
   }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
 }
 
 .btn {
@@ -49,7 +54,6 @@ article {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
   color: #fff;
   background-color: #e62429;
   font-size: 13px;

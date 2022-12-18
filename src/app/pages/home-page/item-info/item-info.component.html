@@ -12,9 +12,10 @@
     <span>Description: </span>
     {{ currentComic.description ? currentComic.description : "Unknown" }}
   </p>
-  <a [routerLink]="['/comic', currentComic.id]" class="btn">GET MORE INFO</a>
+  <div class="wrapper">
+    <a [routerLink]="['/comic', currentComic.id]" class="btn">GET MORE INFO</a>
+  </div>
 </article>
-<div class="test"></div>
 <article *ngIf="!currentComic">
   <div class="thumb">
     <span class="skeleton-image skeleton"></span>
