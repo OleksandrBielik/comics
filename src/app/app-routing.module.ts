@@ -4,7 +4,8 @@ import { CharacterComponent } from './pages/character-page/character/character.c
 import { HomeComponent } from './pages/home-page/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/characters', pathMatch: 'full' },
+  { path: 'characters', component: HomeComponent },
   { path: 'character/:id', component: CharacterComponent },
 ];
 

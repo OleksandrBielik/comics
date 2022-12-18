@@ -45,61 +45,46 @@ article {
 }
 
 .btn {
-  overflow: hidden;
+  position: relative;
   display: flex;
-  width: 160px;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 15px;
   color: #fff;
-  height: 48px;
-  .fragment {
-    height: calc(100% / 3);
-    width: 100%;
-    display: flex;
-    position: relative;
-  }
-  .inner-fragment {
-    height: 100%;
-    overflow: hidden;
-  }
-  .link-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% / 3);
-    background-color: #e62429;
-    font-size: 14px;
-    width: 100%;
-  }
-  .small {
-    width: 16px;
-    position: relative;
-  }
-  .large {
-    width: 144px;
-    background-color: #e62429;
-  }
-  .transform {
-    transform: rotate(180deg);
-  }
-  .transform-fragment {
+  background-color: #e62429;
+  font-size: 13px;
+  height: 40px;
+  padding: 15px 20px;
+  &::after {
+    content: '';
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: #fff;
+    border-style: solid;
+    border-top-color: transparent;
+    border-width: 12px 12px 0 0;
+    bottom: 0;
     position: absolute;
-    bottom: 4px;
-    right: 4px;
-    width: 16px;
-    height: 16px;
-    border-left: 12px solid transparent;
-    border-right: 12px solid #e62429;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    transform: rotate(45deg);
+    right: 0;
+    top: auto;
+    z-index: 40;
   }
-  &:hover .large, &:focus .large, &:hover .link-title, &:focus .link-title {
+  &::before {
+    content: '';
+    border-bottom-color: transparent;
+    border-top-color: #fff;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-style: solid;
+    border-width: 12px 12px 0 0;
+    bottom: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 40;
+  }
+  &:hover, &:focus {
     background-color: #9e1e23;
-  }
-  &:hover .transform-fragment, &:focus .transform-fragment {
-    border-right: 12px solid #9e1e23;
   }
 }
 
