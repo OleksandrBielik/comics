@@ -8,7 +8,7 @@
   }
   li {
     margin: 15px;
-    width: calc((100% - 8*15px) / 4);
+    width: calc((100% - 8 * 15px) / 4);
     overflow: hidden;
   }
   .card-body {
@@ -52,7 +52,8 @@
     z-index: 1;
     transition: all 250ms ease-in-out;
   }
-  button:hover .overlay, button:focus .overlay {
+  button:hover .overlay,
+  button:focus .overlay {
     transform: translateY(0);
   }
   .card-body::after {
@@ -91,7 +92,7 @@
     content: '';
     border-bottom-color: transparent;
     border-left-color: transparent;
-    border-right-color: #fff;
+    border-right-color: #f5f5f5;
     border-style: solid;
     border-top-color: transparent;
     border-width: 12px 12px 0 0;
@@ -104,7 +105,7 @@
   &::before {
     content: '';
     border-bottom-color: transparent;
-    border-top-color: #fff;
+    border-top-color: #f5f5f5;
     border-left-color: transparent;
     border-right-color: transparent;
     border-style: solid;
@@ -115,7 +116,8 @@
     top: 0;
     z-index: 40;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: #9e1e23;
   }
 }

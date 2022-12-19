@@ -1,3 +1,37 @@
 :host {
   display: block;
 }
+
+.character {
+  display: flex;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #fff;
+  .title,
+  .description,
+  .comics {
+    margin-bottom: 5px;
+  }
+  .thumb {
+    height: 250px;
+    width: 200px;
+    margin-right: 15px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  ul {
+    padding-left: 15px;
+  }
+  li {
+    list-style: square;
+  }
+  li:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  span {
+    font-weight: 800;
+  }
+}

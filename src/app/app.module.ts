@@ -11,6 +11,8 @@ import { ItemInfoComponent } from './pages/home-page/item-info/item-info.compone
 import { RandomCharacterComponent } from './pages/home-page/random-character/random-character.component';
 import { CharacterComponent } from './pages/character-page/character/character.component';
 import { NavListComponent } from './shared/components/nav-list/nav-list.component';
+import { ComicsComponent } from './pages/comics-page/comics/comics.component';
+import { ComicsListComponent } from './pages/comics-page/comics-list/comics-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NavListComponent } from './shared/components/nav-list/nav-list.componen
     RandomCharacterComponent,
     CharacterComponent,
     NavListComponent,
+    ComicsComponent,
+    ComicsListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

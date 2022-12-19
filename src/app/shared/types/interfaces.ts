@@ -3,7 +3,7 @@ export interface Char {
   name: string;
   description: string;
   thumbnail: Thumbnail;
-  comics?: Comic[];
+  comics?: { name: string }[];
 }
 
 export interface Thumbnail {
@@ -12,5 +12,9 @@ export interface Thumbnail {
 }
 
 export interface Comic {
-  name: string;
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: Thumbnail;
+  series?: { name: string }[];
 }
