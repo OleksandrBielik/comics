@@ -13,7 +13,9 @@
     {{ currentComic.description ? currentComic.description : "Unknown" }}
   </p>
   <div class="wrapper">
-    <a [routerLink]="['/comic', currentComic.id]" class="btn">GET MORE INFO</a>
+    <a [routerLink]="['/characters', currentComic.id]" class="btn"
+      >GET MORE INFO</a
+    >
   </div>
 </article>
 <article *ngIf="!currentComic">

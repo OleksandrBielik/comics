@@ -49,7 +49,7 @@ export class MarvelHttpService {
       )
       .pipe(
         map((value: any) => value.data.results),
-        map((value: Char[]) =>
+        map((value: any[]) =>
           value.filter(
             (item) => !item.thumbnail.path.includes('image_not_available')
           )
@@ -62,6 +62,32 @@ export class MarvelHttpService {
             name,
             description,
             thumbnail,
+          };
+        })
+      );
+  }
+
+  fetchCharacter(id: number): Observable<Char> {
+    return this.http
+      .get(
+        `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=c9b447237a938fb45510338c1513036b`
+      )
+      .pipe(
+        map((value: any) => value.data.results),
+        map((value: any) => {
+          const {
+            id,
+            name,
+            description,
+            thumbnail,
+            comics: { items },
+          } = value[0];
+          return {
+            id,
+            name,
+            description,
+            thumbnail,
+            comics: items,
           };
         })
       );

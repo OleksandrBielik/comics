@@ -1,9 +1,15 @@
 <div class="character">
   <div class="thumb">
-    <img src="" alt="" />
+    <img
+      [src]="character?.thumbnail?.path + '.' + character?.thumbnail?.extension"
+      [alt]="character?.name + ' image'"
+    />
   </div>
   <div class="info">
-    <div class="title"></div>
-    <div class="description"></div>
+    <div class="title">{{ character?.name }}</div>
+    <div class="description">{{ character?.description }}</div>
+    <ul>
+      <li *ngFor="let comic of character?.comics">{{ comic.name }}</li>
+    </ul>
   </div>
 </div>

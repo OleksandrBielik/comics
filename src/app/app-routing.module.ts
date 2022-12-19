@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home-page/home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: '/characters', pathMatch: 'full' },
   { path: 'characters', component: HomeComponent },
-  { path: 'character/:id', component: CharacterComponent },
+  { path: 'characters/:id', component: CharacterComponent },
 ];
 
 @NgModule({
