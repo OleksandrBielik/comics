@@ -13,6 +13,7 @@ import { CharacterComponent } from './pages/character-page/character/character.c
 import { NavListComponent } from './shared/components/nav-list/nav-list.component';
 import { ComicsComponent } from './pages/comics-page/comics/comics.component';
 import { ComicsListComponent } from './pages/comics-page/comics-list/comics-list.component';
+import { ComicComponent } from './pages/comic-page/comic/comic.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ComicsListComponent } from './pages/comics-page/comics-list/comics-list
     NavListComponent,
     ComicsComponent,
     ComicsListComponent,
+    ComicComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

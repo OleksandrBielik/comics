@@ -123,4 +123,24 @@ export class MarvelHttpService {
         )
       );
   }
+
+  fetchComic(id: number): Observable<Comic> {
+    return this.http
+      .get(
+        `https://gateway.marvel.com:443/v1/public/comics/${id}?apikey=c9b447237a938fb45510338c1513036b`
+      )
+      .pipe(
+        map((value: any) => value.data.results),
+        map((value: any) => {
+          const { id, title, description, thumbnail, series } = value[0];
+          return {
+            id,
+            title,
+            description,
+            thumbnail,
+            series,
+          };
+        })
+      );
+  }
 }

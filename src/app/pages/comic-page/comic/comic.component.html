@@ -1,0 +1,21 @@
+<div class="comic">
+  <div class="overlay-container">
+    <img
+      class="bg-image"
+      [src]="comic?.thumbnail?.path + '.' + comic?.thumbnail?.extension"
+      [alt]="comic?.title + ' image'"
+    />
+    <div class="overlay"></div>
+  </div>
+  <div class="container">
+    <div class="comic-content">
+      <div class="thumb">
+        <img
+          [src]="comic?.thumbnail?.path + '.' + comic?.thumbnail?.extension"
+          [alt]="comic?.title + ' image'"
+        />
+      </div>
+      <div class="comic-info"></div>
+    </div>
+  </div>
+</div>

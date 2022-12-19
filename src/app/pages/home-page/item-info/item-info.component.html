@@ -10,7 +10,7 @@
   <h2><span>Name: </span>{{ currentComic.name }}</h2>
   <p>
     <span>Description: </span>
-    {{ currentComic.description ? currentComic.description : "Unknown" }}
+    {{ currentComic.description ? currentComic.description : 'Unknown' }}
   </p>
   <div class="wrapper">
     <a [routerLink]="['/characters', currentComic.id]" class="btn"

@@ -5,5 +5,40 @@
 .comics-container {
   display: flex;
   flex-wrap: wrap;
-
+  background-color: #fff;
+  border-radius: 3px;
+  .thumb {
+    height: 330px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 26px 24px -16px rgb(0 0 0 / 40%);
+    transition: all 250ms ease-in-out;
+  }
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  li {
+    margin: 15px;
+    width: calc((100% - 10*15px)/5);
+  }
+  .card-body {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  a:hover .thumb, a:focus .thumb {
+    transform: translateY(-10px);
+  }
+  a:hover h2, a:focus h2 {
+    color: #e62429;
+  }
+  .card-body {
+    display: flex;
+    justify-content: flex-start;
+    height: 70px;
+    padding: 5px 0;
+  }
 }

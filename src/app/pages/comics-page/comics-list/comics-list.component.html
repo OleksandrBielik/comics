@@ -1,16 +1,15 @@
 <ul class="comics-container">
   <li *ngFor="let item of comicsList$ | async">
-    <a href="#">
+    <a [routerLink]="['/comics', item.id]">
       <div class="thumb">
         <img
           [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
           [alt]="item.title + ' image'"
-          height="135"
+          height="330"
         />
       </div>
       <div class="card-body">
         <h2>{{ item.title }}</h2>
-        <div class="overlay"></div>
       </div>
     </a>
   </li>
