@@ -4,12 +4,12 @@
       <div class="thumb">
         <img
           [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
-          [alt]="item.name + ' image'"
+          [alt]="item.title + ' image'"
           height="180"
         />
       </div>
       <div class="card-body">
-        <h2>{{ item.name }}</h2>
+        <h2>{{ item.title }}</h2>
         <div class="overlay"></div>
       </div>
     </button>

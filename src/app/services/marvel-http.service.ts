@@ -1,9 +1,10 @@
+import { Thumbnail } from './../shared/types/interfaces';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { Char, Comic } from '../shared/types/interfaces';
+import { Author, Char, Comic } from '../shared/types/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -28,15 +29,26 @@ export class MarvelHttpService {
             (item: any) => !item.thumbnail.path.includes('image_not_available')
           )
         ),
-        map((value: Char[]) =>
-          value.map((item: Char) => {
-            return {
-              id: item.id,
-              name: item.name,
-              description: item.description,
-              thumbnail: item.thumbnail,
-            };
-          })
+        map((value) =>
+          value.map(
+            (item: {
+              id: string;
+              name: string;
+              description: string;
+              thumbnail: Thumbnail;
+            }) => {
+              return {
+                id: item.id,
+                title: item.name,
+                type: 'character',
+                price: Number(
+                  (Math.random() * (100 - 0.01 + 1) + 0.01).toFixed(2)
+                ),
+                description: item.description,
+                thumbnail: item.thumbnail,
+              };
+            }
+          )
         )
       );
   }
@@ -59,7 +71,8 @@ export class MarvelHttpService {
             value[Math.floor(Math.random() * value.length)];
           return {
             id,
-            name,
+            title: name,
+            type: 'character',
             description,
             thumbnail,
           };
@@ -84,7 +97,8 @@ export class MarvelHttpService {
           } = value[0];
           return {
             id,
-            name,
+            title: name,
+            type: 'character',
             description,
             thumbnail,
             comics: items,
@@ -101,10 +115,10 @@ export class MarvelHttpService {
       )
       .pipe(
         map((value: any) => {
+          console.log(console.log(value));
           this.marvelService.setTotalOffset(value.data.total);
-          return value;
+          return value.data.results;
         }),
-        map((value: any) => value.data.results),
         map((value: any) =>
           value.filter(
             (item: any) => !item.thumbnail.path.includes('image_not_available')
@@ -112,12 +126,25 @@ export class MarvelHttpService {
         ),
         map((value: Comic[]) =>
           value.map((item: Comic) => {
-            const { id, title, description, thumbnail } = item;
-            return {
+            const {
               id,
               title,
               description,
               thumbnail,
+              creators: { items },
+            } = item;
+            return {
+              id,
+              title,
+              type: 'comic',
+              price: Number(
+                (Math.random() * (100 - 0.01 + 1) + 0.01).toFixed(2)
+              ),
+              description,
+              thumbnail,
+              creators: items.map((item: Author) => {
+                return { name: item.name, role: item.role };
+              }),
             };
           })
         )
@@ -132,13 +159,22 @@ export class MarvelHttpService {
       .pipe(
         map((value: any) => value.data.results),
         map((value: any) => {
-          const { id, title, description, thumbnail, series } = value[0];
-          return {
+          const {
             id,
             title,
             description,
             thumbnail,
-            series,
+            creators: { items },
+          } = value[0];
+          return {
+            id,
+            title,
+            type: 'comic',
+            description,
+            thumbnail,
+            creators: items.map((item: Author) => {
+              return { name: item.name, role: item.role };
+            }),
           };
         })
       );

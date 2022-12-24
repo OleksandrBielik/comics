@@ -15,7 +15,16 @@
           [alt]="comic?.title + ' image'"
         />
       </div>
-      <div class="comic-info"></div>
+      <div class="comic-info">
+        <h2>{{ comic?.title }}</h2>
+        <ul class="info-container">
+          <li *ngFor="let item of comic?.creators">
+            <h3>{{ item.role + ':' | firstLetter }}</h3>
+            <span>{{ item.name }}</span>
+          </li>
+        </ul>
+        <p>{{ comic?.description }}</p>
+      </div>
     </div>
   </div>
 </div>

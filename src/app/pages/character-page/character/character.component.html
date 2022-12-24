@@ -1,22 +1,32 @@
-<div class="container">
-  <div class="character">
-    <div class="thumb">
-      <img
-        [src]="
-          character?.thumbnail?.path + '.' + character?.thumbnail?.extension
-        "
-        [alt]="character?.name + ' image'"
-      />
-    </div>
-    <div class="info">
-      <div class="title"><span>Title:</span> {{ character?.name }}</div>
-      <div class="description">
-        <span>Description:</span> {{ character?.description }}
+<div class="character">
+  <div class="overlay-container">
+    <img
+      class="bg-image"
+      [src]="character?.thumbnail?.path + '.' + character?.thumbnail?.extension"
+      [alt]="character?.title + ' image'"
+    />
+    <div class="overlay"></div>
+  </div>
+  <div class="container">
+    <div class="comic-content">
+      <div class="thumb">
+        <img
+          [src]="
+            character?.thumbnail?.path + '.' + character?.thumbnail?.extension
+          "
+          [alt]="character?.title + ' image'"
+        />
       </div>
-      <div class="comics"><span>Comics:</span></div>
-      <ul>
-        <li *ngFor="let comic of character?.comics">{{ comic.name }}</li>
-      </ul>
+      <div class="comic-info">
+        <h2>{{ character?.title }}</h2>
+        <p>{{ character?.description }}</p>
+        <h3>Series:</h3>
+        <ul class="info-container">
+          <li *ngFor="let item of character?.comics">
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

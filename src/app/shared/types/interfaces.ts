@@ -1,6 +1,8 @@
 export interface Char {
   id: string;
-  name: string;
+  title: string;
+  type: string;
+  price?: number;
   description: string;
   thumbnail: Thumbnail;
   comics?: { name: string }[];
@@ -14,7 +16,22 @@ export interface Thumbnail {
 export interface Comic {
   id: string;
   title: string;
+  type: string;
+  price?: number;
   description: string;
   thumbnail: Thumbnail;
-  series?: { name: string }[];
+  creators?: any;
+}
+
+export interface Author {
+  name: string;
+  role: string;
+}
+
+export interface CartItem {
+  id: string;
+  title: string;
+  type: string;
+  price?: number;
+  thumbnail: Thumbnail;
 }

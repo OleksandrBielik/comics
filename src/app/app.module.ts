@@ -14,6 +14,8 @@ import { NavListComponent } from './shared/components/nav-list/nav-list.componen
 import { ComicsComponent } from './pages/comics-page/comics/comics.component';
 import { ComicsListComponent } from './pages/comics-page/comics-list/comics-list.component';
 import { ComicComponent } from './pages/comic-page/comic/comic.component';
+import { FirstLetterPipe } from './shared/pipes/first-letter.pipe';
+import { CartComponent } from './shared/components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ComicComponent } from './pages/comic-page/comic/comic.component';
     ComicsComponent,
     ComicsListComponent,
     ComicComponent,
+    FirstLetterPipe,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
