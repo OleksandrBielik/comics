@@ -11,8 +11,12 @@ export class CartService {
   private cart: CartItem[] = [];
 
   addItem(сartItem: CartItem): void {
-    console.log(сartItem);
     this.cart.push(сartItem);
     this._cart.next(this.cart);
+    console.log(this.cart);
+  }
+
+  get cartLength() {
+    return this.cart.length;
   }
 }

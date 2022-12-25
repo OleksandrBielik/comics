@@ -32,6 +32,7 @@ export interface CartItem {
   id: string;
   title: string;
   type: string;
+  quantity: number;
   price?: number;
   thumbnail: Thumbnail;
 }

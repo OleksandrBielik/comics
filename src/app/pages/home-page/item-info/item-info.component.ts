@@ -17,6 +17,7 @@ export class ItemInfoComponent {
       id: item.id,
       title: item.title,
       type: item.type,
+      quantity: 1,
       price: item.price,
       thumbnail: item.thumbnail,
     };
