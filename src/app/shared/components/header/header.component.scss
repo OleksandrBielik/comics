@@ -5,11 +5,17 @@ header {
 	background-color: $main-bg-color;
   color: $white;
   border-bottom: 2px solid $border-color;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
 }
 
 .authorization {
   display: flex;
   align-items: center;
+  margin-right: 15px;
   svg {
     fill: $white;
     margin-right: 10px;

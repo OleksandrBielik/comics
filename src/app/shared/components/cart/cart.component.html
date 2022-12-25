@@ -1,5 +1,19 @@
-<ul>
-  <li *ngFor="let item of cart$ | async">
-    {{ item.title }}
+<ul class="cart">
+  <li class="cart-item" *ngFor="let item of cart$ | async">
+    <div class="thumb">
+      <img
+        [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
+        [alt]="item.title + ' image'"
+      />
+    </div>
+    <h2 class="title">{{ item.title }}</h2>
+    <form class="quantity flex">
+      <button type="button">-</button>
+      <input type="number" />
+      <button type="button">+</button>
+    </form>
+    <span class="price">{{
+      getCartItemTotalPrice(item.price, item.quantity) + ' $'
+    }}</span>
   </li>
 </ul>

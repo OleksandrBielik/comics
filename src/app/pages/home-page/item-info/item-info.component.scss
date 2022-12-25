@@ -48,7 +48,27 @@ article {
   .wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 15px;
+  }
+  button {
+    position: relative;
+    width: 25px;
+    height: 25px;
+  }
+  .icon-check {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #078d07;
+    color: #ffffff;
+    font-size: 10px;
   }
 }
 
@@ -93,5 +113,6 @@ article {
   &:hover, &:focus {
     background-color: #9e1e23;
   }
+
 }
 

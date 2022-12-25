@@ -16,7 +16,7 @@ export class CartService {
     console.log(this.cart);
   }
 
-  get cartLength() {
-    return this.cart.length;
+  isAvailable(id: string): boolean {
+    return !!this.cart.find((item) => item.id === id);
   }
 }

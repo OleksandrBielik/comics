@@ -2,7 +2,7 @@ export interface Char {
   id: string;
   title: string;
   type: string;
-  price?: number;
+  price: number;
   description: string;
   thumbnail: Thumbnail;
   comics?: { name: string }[];
@@ -17,7 +17,7 @@ export interface Comic {
   id: string;
   title: string;
   type: string;
-  price?: number;
+  price: number;
   description: string;
   thumbnail: Thumbnail;
   creators?: any;
@@ -33,6 +33,6 @@ export interface CartItem {
   title: string;
   type: string;
   quantity: number;
-  price?: number;
+  price: number;
   thumbnail: Thumbnail;
 }

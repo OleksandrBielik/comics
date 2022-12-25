@@ -74,6 +74,7 @@ export class MarvelHttpService {
             title: name,
             type: 'character',
             description,
+            price: Number((Math.random() * (100 - 0.01 + 1) + 0.01).toFixed(2)),
             thumbnail,
           };
         })
@@ -101,6 +102,7 @@ export class MarvelHttpService {
             type: 'character',
             description,
             thumbnail,
+            price: Number((Math.random() * (100 - 0.01 + 1) + 0.01).toFixed(2)),
             comics: items,
           };
         })
@@ -172,6 +174,7 @@ export class MarvelHttpService {
             type: 'comic',
             description,
             thumbnail,
+            price: Number((Math.random() * (100 - 0.01 + 1) + 0.01).toFixed(2)),
             creators: items.map((item: Author) => {
               return { name: item.name, role: item.role };
             }),
