@@ -1,4 +1,4 @@
-import { CartItem } from './../shared/types/interfaces';
+import { CartItem, Char, Comic } from './../shared/types/interfaces';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -10,12 +10,22 @@ export class CartService {
   readonly cart$ = this._cart.asObservable();
   private cart: CartItem[] = [];
 
-  addItem(сartItem: CartItem): void {
-    if (this.isAvailable(сartItem.id)) {
-      this.increaseQuantity(сartItem.id);
+  addItem(item: Char | Comic): void {
+    const cartItem: CartItem = {
+      id: item.id,
+      title: item.title,
+      type: item.type,
+      quantity: 1,
+      price: item.price,
+      thumbnail: item.thumbnail,
+    };
+
+    if (this.isAvailable(cartItem.id)) {
+      this.increaseQuantity(cartItem.id);
       return;
     }
-    this.cart.push(сartItem);
+
+    this.cart.push(cartItem);
     this._cart.next(this.cart);
   }
 

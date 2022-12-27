@@ -62,7 +62,7 @@
         <g></g>
         <g></g>
       </svg>
-      <span class="icon-check" *ngIf="isAvailable$ | async">✓</span>
+      <span class="icon-check" *ngIf="isAvailable(currentComic.id)">✓</span>
     </button>
   </div>
 </article>
