@@ -1,6 +1,6 @@
-<app-header (cartShow)="showCart($event)"></app-header>
+<app-header [(cartVisibility)]="cartVisibility"></app-header>
 <app-nav-list></app-nav-list>
-<app-cart *ngIf="cart" [visibility]="cart"></app-cart>
+<app-cart *ngIf="cartVisibility" [(cartVisibility)]="cartVisibility"></app-cart>
 <main>
   <router-outlet></router-outlet>
 </main>

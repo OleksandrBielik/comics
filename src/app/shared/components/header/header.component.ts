@@ -11,15 +11,18 @@ import { CartItem } from '../../types/interfaces';
 export class HeaderComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
-  cart$?: Observable<CartItem[]>;
-  cartVisibility = false;
-  @Output() cartShow = new EventEmitter<boolean>();
+  cart$!: Observable<CartItem[]>;
+  @Input() cartVisibility = false;
+  @Output() cartVisibilityChange = new EventEmitter<boolean>();
 
   onClick(): void {
-    this.cartVisibility = !this.cartVisibility;
-    console.log(this.cartVisibility);
-    this.cartShow.emit(this.cartVisibility);
+    this.cartVisibilityChange.emit(!this.cartVisibility);
   }
+
+  get totalQuantity(): number {
+    return this.cartService.totalQuantity;
+  }
+
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;
   }

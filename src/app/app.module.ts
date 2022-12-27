@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ComicsListComponent } from './pages/comics-page/comics-list/comics-list
 import { ComicComponent } from './pages/comic-page/comic/comic.component';
 import { FirstLetterPipe } from './shared/pipes/first-letter.pipe';
 import { CartComponent } from './shared/components/cart/cart.component';
+import { CartItemComponent } from './shared/components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,15 @@ import { CartComponent } from './shared/components/cart/cart.component';
     ComicComponent,
     FirstLetterPipe,
     CartComponent,
+    CartItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

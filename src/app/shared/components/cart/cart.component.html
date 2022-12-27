@@ -1,19 +1,23 @@
-<ul class="cart">
-  <li class="cart-item" *ngFor="let item of cart$ | async">
-    <div class="thumb">
-      <img
-        [src]="item.thumbnail.path + '.' + item.thumbnail.extension"
-        [alt]="item.title + ' image'"
-      />
+<div class="cart-modal">
+  <div class="cart-header">
+    <div class="wrapper">
+      <h2>Cart</h2>
+      <button class="close-btn" type="button" (click)="closeCart()">X</button>
     </div>
-    <h2 class="title">{{ item.title }}</h2>
-    <form class="quantity flex">
-      <button type="button">-</button>
-      <input type="number" />
-      <button type="button">+</button>
-    </form>
-    <span class="price">{{
-      getCartItemTotalPrice(item.price, item.quantity) + ' $'
-    }}</span>
-  </li>
-</ul>
+  </div>
+  <ul class="cart">
+    <li class="cart-item" *ngFor="let item of cart$ | async">
+      <app-cart-item
+        [item]="item"
+        (editItem)="editItem($event, item.id)"
+      ></app-cart-item>
+    </li>
+  </ul>
+  <div class="cart-footer">
+    <span class="total-price"
+      >Total price: {{ totalPrice.toFixed(2) + ' $' }}</span
+    >
+    <button class="check-out" type="button">Check out</button>
+  </div>
+</div>
+<div class="overlay" (click)="closeCart()"></div>

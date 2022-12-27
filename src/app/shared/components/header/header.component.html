@@ -75,7 +75,7 @@
           <g></g>
         </svg>
         <span class="quantity" *ngIf="(cart$ | async)?.length">{{
-          (cart$ | async)?.length
+          totalQuantity
         }}</span>
       </button>
     </div>
