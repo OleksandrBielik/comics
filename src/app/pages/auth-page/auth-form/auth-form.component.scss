@@ -1,0 +1,26 @@
+:host {
+  display: inline-block;
+  max-width: 320px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 0px 24px 7px rgba(0,0,0,0.75);
+  border-radius: 3px;
+
+  button {
+    color: #fff;
+    padding: 20px;
+    background-color: #078d07;
+  }
+  label {
+    margin-bottom: 5px;
+  }
+  input {
+    margin-bottom: 15px;
+  }
+}

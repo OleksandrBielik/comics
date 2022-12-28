@@ -18,6 +18,8 @@ import { ComicComponent } from './pages/comic-page/comic/comic.component';
 import { FirstLetterPipe } from './shared/pipes/first-letter.pipe';
 import { CartComponent } from './shared/components/cart/cart.component';
 import { CartItemComponent } from './shared/components/cart-item/cart-item.component';
+import { AuthFormComponent } from './pages/auth-page/auth-form/auth-form.component';
+import { AuthComponent } from './pages/auth-page/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { CartItemComponent } from './shared/components/cart-item/cart-item.compo
     FirstLetterPipe,
     CartComponent,
     CartItemComponent,
+    AuthFormComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

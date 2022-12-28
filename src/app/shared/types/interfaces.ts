@@ -36,3 +36,9 @@ export interface CartItem {
   price: number;
   thumbnail: Thumbnail;
 }
+
+export interface User {
+  email: string;
+  password: string;
+  returnSecureToken: boolean;
+}
