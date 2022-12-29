@@ -1,0 +1,54 @@
+:host {
+  display: inline-block;
+  max-width: 320px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  .signin {
+    color: #fff;
+    padding: 10px;
+    background-color: #e62429;
+    font-size: 14px;
+    margin-bottom: 45px;
+    width: 100%;
+  }
+  input {
+    margin-bottom: 15px;
+    padding: 10px 10px;
+    border: 1px solid #5e646b;
+    border-radius: 5px;
+    color: #5e646b;
+    width: 100%;
+  }
+  .create {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    font-weight: 600;
+  }
+  .separator {
+    border-bottom: 1px solid #5e646b;
+    width: 100%;
+  }
+  svg, h2 {
+    margin-bottom: 25px;
+    color: #e62429;
+  }
+  .error-container {
+    color: #e62429;
+  }
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid #5e646b;
+}

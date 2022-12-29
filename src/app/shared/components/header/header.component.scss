@@ -10,17 +10,25 @@ header {
     align-items: center;
     width: auto;
   }
-}
-
-.authorization {
-  display: flex;
-  align-items: center;
-  margin-right: 15px;
   svg {
     fill: $white;
     margin-right: 10px;
   }
+  .auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-right: 15px;
+    padding: 0 10px;
+    border-right: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+  }
+  .separator {
+    margin: 0 10px;
+  }
 }
+
 
 .cart {
   position: relative;

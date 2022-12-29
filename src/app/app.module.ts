@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,8 +19,10 @@ import { ComicComponent } from './pages/comic-page/comic/comic.component';
 import { FirstLetterPipe } from './shared/pipes/first-letter.pipe';
 import { CartComponent } from './shared/components/cart/cart.component';
 import { CartItemComponent } from './shared/components/cart-item/cart-item.component';
-import { AuthFormComponent } from './pages/auth-page/auth-form/auth-form.component';
-import { AuthComponent } from './pages/auth-page/auth/auth.component';
+import { RegisterComponent } from './pages/register-page/register/register.component';
+import { RegisterFormComponent } from './pages/register-page/register-form/register-form.component';
+import { SigninComponent } from './pages/signin-page/signin/signin.component';
+import { SigninFormComponent } from './pages/signin-page/signin-form/signin-form.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,10 @@ import { AuthComponent } from './pages/auth-page/auth/auth.component';
     FirstLetterPipe,
     CartComponent,
     CartItemComponent,
-    AuthFormComponent,
-    AuthComponent,
+    RegisterComponent,
+    RegisterFormComponent,
+    SigninComponent,
+    SigninFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { AuthComponent } from './pages/auth-page/auth/auth.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,14 +1,13 @@
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { User } from 'src/app/shared/types/interfaces';
 
 @Component({
-  selector: 'app-auth-form',
-  templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.scss'],
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss'],
 })
-export class AuthFormComponent implements OnInit {
+export class RegisterFormComponent implements OnInit {
   constructor(private authService: AuthService) {}
   form!: FormGroup;
 
