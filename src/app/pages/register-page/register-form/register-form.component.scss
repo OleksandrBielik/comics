@@ -19,11 +19,14 @@ form {
     width: 100%;
   }
   input {
-    margin-bottom: 15px;
     padding: 10px 10px;
     border: 1px solid #5e646b;
     border-radius: 5px;
     color: #5e646b;
+    width: 100%;
+  }
+  label {
+    margin-bottom: 15px;
     width: 100%;
   }
   .create {
@@ -40,8 +43,19 @@ form {
     margin-bottom: 25px;
     color: #e62429;
   }
+  .error-container {
+    margin-top: 5px;
+  }
   a {
     color: #e62429;
     text-decoration: underline;
   }
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid #5e646b;
 }

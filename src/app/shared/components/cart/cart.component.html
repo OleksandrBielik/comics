@@ -17,7 +17,9 @@
     <span class="total-price"
       >Total price: {{ totalPrice.toFixed(2) + ' $' }}</span
     >
-    <button class="check-out" type="button">Check out</button>
+    <button class="check-out" type="button" (click)="checkout()">
+      Check out
+    </button>
   </div>
 </div>
 <div class="overlay" (click)="closeCart()"></div>

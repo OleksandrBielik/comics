@@ -12,14 +12,55 @@
     ></path>
   </svg>
   <h2>Register</h2>
-  <input id="email" type="email" placeholder="Email" formControlName="email" />
-  <input
-    id="password"
-    type="text"
-    placeholder="Password"
-    formControlName="password"
-  />
-  <button class="signin" type="submit">CREATE AN ACCOUNT</button>
+  <label for="email">
+    <input
+      id="email"
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <div
+      class="error-container"
+      *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+      [@error]="errorState"
+    >
+      <span *ngIf="getErrors('email')?.['required']"
+        >Please enter your email.</span
+      >
+      <span *ngIf="getErrors('email')?.['email']"
+        >Please enter a valid email address.</span
+      >
+    </div>
+  </label>
+  <label for="password">
+    <input
+      id="password"
+      type="text"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <div
+      class="error-container"
+      *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+      [@error]="errorState"
+    >
+      <span *ngIf="getErrors('password')?.['required']"
+        >Please enter your password.</span
+      >
+      <span *ngIf="getErrors('password')?.['minlength']"
+        >The password is too short.</span
+      >
+    </div>
+  </label>
+  <button
+    class="signin"
+    type="submit"
+    [disabled]="form.invalid || submited"
+    [ngStyle]="form.invalid || submited ? disabledClass : null"
+  >
+    CREATE AN ACCOUNT
+  </button>
+  <div class="error-block" *ngIf="error$ | async as error">{{ error }}</div>
   <span
     >Already have an account? <a [routerLink]="['/signin']">Sign In</a></span
   >

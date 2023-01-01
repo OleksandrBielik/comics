@@ -38,6 +38,10 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.cartService.totalPrice;
   }
 
+  checkout(): void {
+    this.cartService.checkout();
+  }
+
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$;
     const body = document.querySelector('body');

@@ -19,11 +19,14 @@ form {
     width: 100%;
   }
   input {
-    margin-bottom: 15px;
     padding: 10px 10px;
     border: 1px solid #5e646b;
     border-radius: 5px;
     color: #5e646b;
+    width: 100%;
+  }
+  label {
+    margin-bottom: 15px;
     width: 100%;
   }
   .create {
@@ -41,7 +44,11 @@ form {
     color: #e62429;
   }
   .error-container {
-    color: #e62429;
+    margin-top: 5px;
+  }
+  .error-block {
+    text-align: center;
+    margin-bottom: 15px;
   }
 }
 

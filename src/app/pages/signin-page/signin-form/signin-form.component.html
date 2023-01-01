@@ -12,39 +12,55 @@
     ></path>
   </svg>
   <h2>SIGN IN</h2>
-  <input id="email" type="email" placeholder="Email" formControlName="email" />
-  <div
-    class="error-container"
-    *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-    [@error]="errorState"
+  <label for="email">
+    <input
+      id="email"
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <div
+      class="error-container"
+      *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+      [@error]="errorState"
+    >
+      <span *ngIf="getErrors('email')?.['required']"
+        >Please enter your email.</span
+      >
+      <span *ngIf="getErrors('email')?.['email']"
+        >Please enter a valid email address.</span
+      >
+    </div>
+  </label>
+  <label for="password">
+    <input
+      id="password"
+      type="text"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <div
+      class="error-container"
+      *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+      [@error]="errorState"
+    >
+      <span *ngIf="getErrors('password')?.['required']"
+        >Please enter your password.</span
+      >
+      <span *ngIf="getErrors('password')?.['minlength']"
+        >The password is too short.</span
+      >
+    </div>
+  </label>
+  <button
+    class="signin"
+    type="submit"
+    [ngStyle]="form.invalid || submited ? disabledClass : null"
+    [disabled]="form.invalid || submited"
   >
-    <span *ngIf="getErrors('email')?.['required']"
-      >Please enter your email.</span
-    >
-    <span *ngIf="getErrors('email')?.['email']"
-      >Please enter a valid email address.</span
-    >
-  </div>
-  <input
-    id="password"
-    type="text"
-    placeholder="Password"
-    formControlName="password"
-  />
-  <div
-    class="error-container"
-    *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-  >
-    <span *ngIf="getErrors('password')?.['required']"
-      >Please enter your password.</span
-    >
-    <span *ngIf="getErrors('password')?.['minlength']"
-      >The password is too short.</span
-    >
-  </div>
-  <button class="signin" type="submit" [disabled]="form.invalid">
     SIGN IN
   </button>
+  <div class="error-block" *ngIf="error$ | async as error">{{ error }}</div>
   <span class="separator"></span>
   <a class="create" [routerLink]="['/register']">CREATE AN ACCOUNT</a>
 </form>

@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   animate,
-  state,
+  sequence,
   style,
   transition,
   trigger,
 } from '@angular/animations';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-signin-form',
@@ -15,19 +17,34 @@ import {
   styleUrls: ['./signin-form.component.scss'],
   animations: [
     trigger('error', [
-      state('start', style({ height: 0, opacity: 0 })),
-      state('end', style({ height: 'auto', opacity: 1 })),
-      transition('void => *', [style({ height: 0, opacity: 0 }), animate(350)]),
+      transition('void => *', [
+        style({ transform: 'translateY(-100%)', opacity: 0 }),
+        sequence([
+          animate('0.1s ease-in', style({ transform: 'translateY(0)' })),
+          animate('0.3s ease', style({ opacity: 1 })),
+        ]),
+      ]),
     ]),
   ],
 })
 export class SigninFormComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   form!: FormGroup;
-  errorState!: 'start';
+  errorState!: 'void';
+  error$!: Subject<string>;
+  submited = false;
+  disabledClass: any = { 'background-color': 'gray' };
 
   onSubmit(): void {
-    this.authService.login(this.form.value).subscribe(() => this.form.reset);
+    this.authService.login(this.form.value).subscribe({
+      next: () => {
+        localStorage.setItem('email', this.form.value.email);
+        this.form.reset();
+        this.submited = true;
+        this.router.navigate(['characters']);
+      },
+      error: () => (this.submited = false),
+    });
   }
 
   getErrors(control: string) {
@@ -35,6 +52,7 @@ export class SigninFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.error$ = this.authService.error$;
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [

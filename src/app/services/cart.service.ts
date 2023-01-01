@@ -44,6 +44,11 @@ export class CartService {
     return this.cart.reduce((accum, item) => accum + item.quantity, 0);
   }
 
+  checkout(): void {
+    this.cart = [];
+    this._cart.next(this.cart);
+  }
+
   removeItem(id: string): void {
     this.cart = this.cart.filter((item) => item.id !== id);
     this._cart.next(this.cart);

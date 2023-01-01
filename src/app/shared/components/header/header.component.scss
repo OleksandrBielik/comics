@@ -15,6 +15,7 @@ header {
     margin-right: 10px;
   }
   .auth {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,10 +25,25 @@ header {
     border-right: 2px solid $border-color;
     border-left: 2px solid $border-color;
   }
+  span {
+    cursor: pointer;
+  }
+  .auth:hover .dropdown-menu, .auth:focus .dropdown-menu {
+    display: block;
+  }
   .separator {
     margin: 0 10px;
   }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+  }
 }
+
 
 
 .cart {

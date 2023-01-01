@@ -28,10 +28,21 @@ export class ComicsListComponent implements OnInit {
     return this.cartService.isAvailable(id);
   }
 
-  ngOnInit(): void {
-    this.comicsList$ = this.comicsService.comicsList$;
+  isValidOffset(): boolean {
+    return this.comicsListOffset < this.comicsService.getTotalOffset();
+  }
+
+  setComics(): void {
     this.marvelHttpService
       .fetchComics(this.comicsListOffset)
-      .subscribe((response: Comic[]) => this.comicsService.setComics(response));
+      .subscribe((response) => this.comicsService.addComics(response));
+  }
+
+  ngOnInit(): void {
+    this.comicsList$ = this.comicsService.comicsList$;
+    this.comicsService.comicsListOffset$.subscribe((value) => {
+      this.comicsListOffset = value;
+    });
+    this.setComics();
   }
 }

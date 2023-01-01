@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
-import { Observable, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { catchError, Observable, of, Subject, tap, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../shared/types/interfaces';
 
@@ -8,6 +8,8 @@ import { User } from '../shared/types/interfaces';
   providedIn: 'root',
 })
 export class AuthService {
+  public error$: Subject<string> = new Subject<string>();
+
   constructor(private http: HttpClient) {}
 
   login(user: User): Observable<any> {
@@ -16,7 +18,14 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
         user
       )
-      .pipe(tap(this.setToken));
+      .pipe(
+        tap(this.setToken),
+        catchError((error) => {
+          const { message } = error.error.error;
+          this.error$.next(message);
+          return throwError(() => new Error(message));
+        })
+      );
   }
 
   logout(): void {
@@ -29,7 +38,19 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`,
         user
       )
-      .pipe(tap(this.setToken));
+      .pipe(
+        tap(this.setToken),
+        tap(this.setExpDate),
+        catchError((error) => {
+          const { message } = error.error.error;
+          this.error$.next(message);
+          return throwError(() => new Error(message));
+        })
+      );
+  }
+
+  get email(): string | null {
+    return localStorage.getItem('email');
   }
 
   get token(): string | null {
@@ -49,11 +70,14 @@ export class AuthService {
   }
 
   private setToken(response: any): void {
-    if (response) {
+    localStorage.setItem('fb-token', response.idToken);
+  }
+
+  private setExpDate(response: any): void {
+    if (response.expiresIn) {
       const expDate = new Date(
         new Date().getTime() + +response.expiresIn * 1000
       );
-      localStorage.setItem('fb-token', response.idToken);
       localStorage.setItem('fb-token-exp', expDate.toString());
     }
   }
