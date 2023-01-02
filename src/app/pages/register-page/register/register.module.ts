@@ -20,6 +20,6 @@ import { AuthGuard } from 'src/app/shared/services/auth.guard';
       },
     ]),
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, RegisterComponent, RegisterFormComponent],
 })
 export class RegisterModule {}

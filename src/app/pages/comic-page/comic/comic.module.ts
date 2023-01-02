@@ -11,6 +11,6 @@ import { NgModule } from '@angular/core';
     SharedModule,
     RouterModule.forChild([{ path: 'comics/:id', component: ComicComponent }]),
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, ComicComponent],
 })
 export class ComicModule {}

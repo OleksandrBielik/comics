@@ -16,6 +16,6 @@ import { AuthGuard } from 'src/app/shared/services/auth.guard';
       { path: 'signin', component: SigninComponent, canActivate: [AuthGuard] },
     ]),
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, SigninComponent, SigninFormComponent],
 })
 export class SigninModule {}

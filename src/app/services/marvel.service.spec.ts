@@ -6,11 +6,13 @@ describe('MarvelService', () => {
   let service: MarvelService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ providers: [MarvelService] });
     service = TestBed.inject(MarvelService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should increase length', () => {});
 });

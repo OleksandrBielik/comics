@@ -1,4 +1,7 @@
+import { SigninModule } from './signin.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SigninComponent } from './signin.component';
 
@@ -8,9 +11,9 @@ describe('SigninComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SigninComponent ]
-    })
-    .compileComponents();
+      declarations: [SigninComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule, SigninModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SigninComponent);
     component = fixture.componentInstance;

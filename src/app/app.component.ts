@@ -8,12 +8,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 export class AppComponent implements OnChanges {
   @Input() cartVisibility = false;
 
-  // showCart(event: any): void {
-  //   this.cartVisibility = event;
-  //   this.changeOverflow();
-  //   this.cartShow.emit(this.cartVisibility);
-  // }
-
   changeOverflow(): void {
     const body = document.querySelector('body');
     if (this.cartVisibility && body) {

@@ -12,6 +12,6 @@ import { CommonModule } from '@angular/common';
     SharedModule,
     RouterModule.forChild([{ path: 'comics', component: ComicsComponent }]),
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, ComicsListComponent, ComicsComponent],
 })
 export class ComicsModule {}

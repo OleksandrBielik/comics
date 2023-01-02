@@ -17,6 +17,12 @@ import { HomeComponent } from './home.component';
     CommonModule,
     RouterModule.forChild([{ path: 'characters', component: HomeComponent }]),
   ],
-  exports: [RouterModule],
+  exports: [
+    RouterModule,
+    HomeComponent,
+    ItemListComponent,
+    ItemInfoComponent,
+    RandomCharacterComponent,
+  ],
 })
 export class HomeModule {}

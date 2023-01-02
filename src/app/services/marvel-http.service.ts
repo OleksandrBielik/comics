@@ -2,7 +2,7 @@ import { Thumbnail } from './../shared/types/interfaces';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Author, Char, Comic } from '../shared/types/interfaces';
 
@@ -19,9 +19,8 @@ export class MarvelHttpService {
         { params: new HttpParams().set('offset', offset) }
       )
       .pipe(
-        map((value: any) => {
+        tap((value: any) => {
           this.marvelService.setTotalOffset(value.data.total);
-          return value;
         }),
         map((value: any) => value.data.results),
         map((value: any) =>

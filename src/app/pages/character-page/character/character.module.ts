@@ -11,6 +11,6 @@ import { CharacterComponent } from './character.component';
       { path: 'characters/:id', component: CharacterComponent },
     ]),
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, CharacterComponent],
 })
 export class CharacterModule {}
