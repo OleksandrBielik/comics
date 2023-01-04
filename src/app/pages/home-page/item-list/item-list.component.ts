@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { MarvelHttpService } from 'src/app/services/marvel-http.service';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { Char } from 'src/app/shared/types/interfaces';
@@ -14,9 +14,9 @@ export class ItemListComponent implements OnInit {
     private marvelHttpService: MarvelHttpService,
     private marvelService: MarvelService
   ) {}
-  characterList$?: Observable<Char[]>;
+  characterList$!: BehaviorSubject<Char[]>;
   comic?: Char;
-  characterListOffset = 0;
+  characterListOffset$!: BehaviorSubject<number>;
   @Output() pickComic = new EventEmitter<Char>();
 
   onCLick(item: Char): void {
@@ -26,19 +26,32 @@ export class ItemListComponent implements OnInit {
 
   setCharacters(): void {
     this.marvelHttpService
-      .fetchCharacters(this.characterListOffset)
+      .fetchCharacters(this.characterListOffset$.getValue())
+      .subscribe((response) => this.marvelService.setCharacters(response));
+  }
+
+  setCharacterListOffset(): void {
+    this.marvelService.setCharacterListOffset();
+  }
+
+  addCharacters(): void {
+    this.setCharacterListOffset();
+    this.marvelHttpService
+      .fetchCharacters(this.characterListOffset$.getValue())
       .subscribe((response) => this.marvelService.addCharacters(response));
   }
 
   isValidOffset(): boolean {
-    return this.characterListOffset < this.marvelService.getTotalOffset();
+    return (
+      this.characterListOffset$.getValue() < this.marvelService.getTotalOffset()
+    );
   }
 
   ngOnInit(): void {
     this.characterList$ = this.marvelService.characterList$;
-    this.marvelService.characterListOffset$.subscribe((value) => {
-      this.characterListOffset = value;
-    });
-    this.setCharacters();
+    this.characterListOffset$ = this.marvelService.characterListOffset$;
+    if (!this.characterList$.getValue().length) {
+      this.setCharacters();
+    }
   }
 }

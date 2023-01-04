@@ -1,3 +1,4 @@
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { Component, OnInit } from '@angular/core';
 import { MarvelHttpService } from 'src/app/services/marvel-http.service';
@@ -14,19 +15,20 @@ export class RandomCharacterComponent implements OnInit {
     private marvelService: MarvelService
   ) {}
   randomCharacter?: Char;
-  totalOffset!: number;
+  totalOffset$!: BehaviorSubject<number>;
+  subscriptions: Subscription[] = [];
 
   setRandomChar(): void {
-    const offset = Math.floor(Math.random() * (this.totalOffset / 20));
+    const offset = Math.floor(
+      Math.random() * (this.totalOffset$.getValue() / 20)
+    );
     this.marvelHttpService
       .fetchRandomCharacter(offset)
       .subscribe((value: Char) => (this.randomCharacter = value));
   }
 
   ngOnInit(): void {
+    this.totalOffset$ = this.marvelService.totalOffset$;
     this.setRandomChar();
-    this.marvelService.totalOffset$.subscribe((value) => {
-      this.totalOffset = value;
-    });
   }
 }
